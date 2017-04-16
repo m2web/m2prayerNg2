@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { PrayerDate } from './classes/PrayerDate';
+import { ESV } from './classes/ESV';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = "Mark's Prayer Today";
+  todaysDate = new PrayerDate().todaysDate; 
+  todaysVerse = new ESV().todaysVerse;
 }
