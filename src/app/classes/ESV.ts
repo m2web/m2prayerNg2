@@ -2,9 +2,9 @@ import { Http} from '@angular/http';
 
 export class ESV {
     todaysVerse: string;
-    private http: Http;
+    scriptureResult: string;
 
-    constructor(){
+    constructor(private http: Http){
         this.todaysVerse = this.getTodaysVerse();
     }
 
@@ -26,7 +26,11 @@ export class ESV {
 
     httpGet (theUrl: string)
     {	
-        return (() => this.http.get(theUrl)).toString();
+        console.log("Starting....");
+        // return (() => this.http.get(theUrl)).toString();
+        this.http.get(theUrl).subscribe(scriptureResult => this.scriptureResult = scriptureResult.text());
+        console.log("The result: " + this.scriptureResult);
+        return this.scriptureResult;
     }
 
     getVerseOptions (){

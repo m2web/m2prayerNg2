@@ -11,5 +11,6 @@ import { Http } from '@angular/http';
 export class AppComponent {
   title = "Mark's Prayer Today";
   todaysDate = new PrayerDate().todaysDate; 
-  todaysVerse = new ESV().todaysVerse;
+  //TODO: fix here
+  todaysVerse = ""; //new ESV().todaysVerse;
 }
