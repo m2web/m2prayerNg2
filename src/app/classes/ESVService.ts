@@ -1,12 +1,12 @@
 import { Http} from '@angular/http';
+import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
 
-export class ESV {
-    todaysVerse: string;
+@Injectable()
+export class ESVService {
     scriptureResult: string;
 
-    constructor(private http: Http){
-        this.todaysVerse = this.getTodaysVerse();
-    }
+    constructor(private http: Http){ }
 
     getVerse (verse: string): string  {
         var base_url = "http://www.esvapi.org/v2/rest/passageQuery?key=687d2878725c2801"
@@ -27,8 +27,10 @@ export class ESV {
     httpGet (theUrl: string)
     {	
         console.log("Starting....");
-        // return (() => this.http.get(theUrl)).toString();
-        this.http.get(theUrl).subscribe(scriptureResult => this.scriptureResult = scriptureResult.text());
+        // this.http.get(theUrl).subscribe(scriptureResult => this.scriptureResult = scriptureResult.text());
+
+        this.http.get(theUrl).map(res => res.text()).subscribe(scriptureResult => this.scriptureResult = scriptureResult);
+
         console.log("The result: " + this.scriptureResult);
         return this.scriptureResult;
     }
