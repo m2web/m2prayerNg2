@@ -13,4 +13,8 @@ export class AppComponent {
   todaysDate = new PrayerDate().todaysDate; 
   //TODO: fix here
   todaysVerse = ""; //new ESV().todaysVerse;
+
+  constructor(private esv: ESV){
+    this.todaysVerse = esv.getTodaysVerse();
+  }
 }
