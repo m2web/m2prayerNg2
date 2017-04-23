@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ESVService {
-    scriptureResult: string;
+    scriptureResult: string = "";
 
     constructor(private http: Http){ }
 
@@ -20,6 +20,7 @@ export class ESVService {
 
     getTodaysVerse (){
         var base_url = "http://www.esvapi.org/v2/rest/dailyVerse?key=687d2878725c2801&"
+        //TODO: look at http://stackoverflow.com/questions/34475523/how-to-pass-url-arguments-query-string-to-a-http-request-on-angular-2
         return this.httpGet(base_url + this.getVerseOptions());
     }
 
@@ -27,7 +28,7 @@ export class ESVService {
     httpGet (theUrl: string)
     {	
         console.log("Starting....");
-        // this.http.get(theUrl).subscribe(scriptureResult => this.scriptureResult = scriptureResult.text());
+        //this.http.get(theUrl).subscribe(scriptureResult => this.scriptureResult = scriptureResult.text());
 
         this.http.get(theUrl).map(res => res.text()).subscribe(scriptureResult => this.scriptureResult = scriptureResult);
 
