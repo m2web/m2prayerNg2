@@ -21,7 +21,7 @@ export class ESVService {
     getTodaysVerse (){
         var base_url = "http://www.esvapi.org/v2/rest/dailyVerse"
         //TODO: look at http://stackoverflow.com/questions/34475523/how-to-pass-url-arguments-query-string-to-a-http-request-on-angular-2
-        return this.httpGet(base_url,this.getVerseOptions());
+        return this.httpGet(base_url, this.getVerseOptions());
     }
 
 
@@ -30,7 +30,7 @@ export class ESVService {
         console.log("Starting....");
         //this.http.get(theUrl).subscribe(scriptureResult => this.scriptureResult = scriptureResult.text());
 
-        this.http.get(baseURL, queryStringParams).subscribe(res => this.scriptureResult = res.text());
+        this.http.get(baseURL, this.getHeaders()).subscribe(res => this.scriptureResult = res.text());
 
         console.log("The result: " + this.scriptureResult);
         return this.scriptureResult;
